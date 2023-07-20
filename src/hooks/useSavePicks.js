@@ -8,7 +8,7 @@ function useSavePicks() {
     const queryClient = useQueryClient();
     const { user } = useContext(UserContext);
 
-    return useMutation((picks) => axios.post(`${window.BACKEND_URL}/api/pick/update`, picks, {
+    return useMutation((picks) => axios.post(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/pick/update`, picks, {
         headers: {
             'Authorization': `Bearer ${user.accessToken}`
         }

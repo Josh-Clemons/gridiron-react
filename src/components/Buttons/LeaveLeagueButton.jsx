@@ -41,7 +41,7 @@ const LeaveLeagueButton = ({leagueDetails}) => {
     // sends league ID as payload to know what to delete, server confirms user making request is league owner
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await axios.delete(`${window.BACKEND_URL}/api/league/leave?leagueId=${leagueDetails.id}`,
+        await axios.delete(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/league/leave?leagueId=${leagueDetails.id}`,
             {
                 headers: {
                     'Authorization': `Bearer ${user.accessToken}`
