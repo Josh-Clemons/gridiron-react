@@ -45,7 +45,7 @@ const DeleteLeagueButton = ({ leagueDetails }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await axios.delete(`http://localhost:8080/api/league/delete?leagueId=${leagueDetails.id}`,
+        await axios.delete(`${window.BACKEND_URL}/api/league/delete?leagueId=${leagueDetails.id}`,
             {
                 headers: {
                     'Authorization': `Bearer ${user.accessToken}`

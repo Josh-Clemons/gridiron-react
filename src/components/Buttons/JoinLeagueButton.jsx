@@ -18,7 +18,7 @@ const JoinLeagueButton = ({ width, size, leagueDetails }) => {
 
   const joinLeague = async () => {
     await axios.post(
-        'http://localhost:8080/api/league/join',
+        `${window.BACKEND_URL}/api/league/join`,
         {
           leagueId: leagueDetails.id,
           inviteCode: leagueDetails.inviteCode
