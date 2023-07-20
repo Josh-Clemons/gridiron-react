@@ -18,7 +18,7 @@ const JoinLeagueButton = ({ width, size, leagueDetails }) => {
 
   const joinLeague = async () => {
     await axios.post(
-        `https://gridiron-java-c95bfe4c87da.herokuapp.com/api/league/join`,
+        `http://localhost:8080/api/league/join`,
         {
           leagueId: leagueDetails.id,
           inviteCode: leagueDetails.inviteCode
