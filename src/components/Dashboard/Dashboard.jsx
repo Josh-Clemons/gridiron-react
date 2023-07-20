@@ -39,6 +39,7 @@ export const Dashboard = () => {
         <Box
             sx={{
                 maxWidth: 600,
+                padding: 1,
                 display: 'flex',
                 flexDirection: 'column',
                 margin: 'auto',
