@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
+import { Typography } from '@mui/material';
 
 const LeagueItem = ({ league }) => {
     // Hooks
@@ -17,9 +18,11 @@ const LeagueItem = ({ league }) => {
         <Box
             component={Paper}
             elevation={20}
+            display={"flex"}
+            flexDirection={"row"}
+            alignContent={"center"}
             onClick={() => leagueClick(league)}
             sx={{
-                height: '2em',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -30,7 +33,13 @@ const LeagueItem = ({ league }) => {
                 },
             }}
         >
-            {league.leagueName}
+            <Typography variant='h6' sx={{flexGrow: 1, p: 1, pl: 3}}>
+                {league.leagueName}
+            </Typography>
+            <Typography variant='body2' sx={{p: 1, pr: 3}}>
+                Users: {league.userCount}/{league.maxUsers}
+            </Typography>
+
         </Box>
     );
 };

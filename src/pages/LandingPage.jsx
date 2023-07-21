@@ -47,13 +47,13 @@ const LandingPage = () => {
                     <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
                         <DashboardButton width={250}/>
                         <LogoutButton width={250}/>
-                        <RulesButton variant={"contained"} size={'medium'} margin={2} width={250}/>
+                        <RulesButton variant={"contained"} size={'medium'} margin={8} width={250}/>
                     </Box>
                     :
                     <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
                         <LoginButton width={250}/>
                         <RegisterButton width={250}/>
-                        <RulesButton variant={"contained"} size={'medium'} margin={2} width={250}/>
+                        <RulesButton variant={"contained"} size={'medium'} margin={8} width={250}/>
                     </Box>
                 }
             </Stack>

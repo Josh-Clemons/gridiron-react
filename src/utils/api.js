@@ -4,7 +4,7 @@ import {errorAlert, successAlert} from "./ToastAlerts.js";
 
 export const fetchAvailableLeagues = async ({queryKey}) => {
     const [_key, {accessToken}] = queryKey;
-    const response = await axios.get(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/league/available`, {
+    const response = await axios.get(`http://localhost:8080/api/league/available`, {
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }
@@ -17,7 +17,7 @@ export const fetchAvailableLeagues = async ({queryKey}) => {
 
 export const fetchLeagueDetails = async ({queryKey}) => {
     const [_key, {accessToken, inviteCode}] = queryKey;
-    const response = await axios.get(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/league/find-by-code?inviteCode=${inviteCode}`, {
+    const response = await axios.get(`http://localhost:8080/api/league/find-by-code?inviteCode=${inviteCode}`, {
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }
@@ -29,7 +29,7 @@ export const fetchLeagueDetails = async ({queryKey}) => {
 };
 
 export const updateCompetitorData = async ({accessToken}) => {
-    const response = await axios.get(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/gamedata//update-db`, {
+    const response = await axios.get(`http://localhost:8080/api/gamedata//update-db`, {
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }
@@ -42,7 +42,7 @@ export const updateCompetitorData = async ({accessToken}) => {
 
 
 export const inviteNewMember = ((to, inviteCode, accessToken) => {
-    axios.post(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/email/invite`, {
+    axios.post(`http://localhost:8080/api/email/invite`, {
             to: to,
             inviteCode: inviteCode
         },
