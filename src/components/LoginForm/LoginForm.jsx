@@ -47,7 +47,7 @@ export default function LoginForm() {
 
     if (signinLoading) {
         return (
-            <Box sx={{display: 'flex', height: '100vh', mt: 5}}>
+            <Box width={'100vw'} sx={{display: 'flex', alignItems: 'center', height: '100vh', mt: 5}}>
                 <ThreeCircles
                     type="ThreeDots"
                     color="#5BC0BE"
