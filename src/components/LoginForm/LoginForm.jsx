@@ -37,17 +37,16 @@ export default function LoginForm() {
             await signIn(username, password).then(() => {
                 navigate(state?.from || '/dashboard');
             }).catch((e) => {
-                console.log(e);
-                setErrorMessage(e.toString());
+                setErrorMessage(e.message);
             })
         } else {
             errorEmptyFields();
         }
     };
 
-    if (signinLoading) {
+    if (!errorMessage && signinLoading) {
         return (
-            <Box width={'100vw'} sx={{display: 'flex', alignItems: 'center', height: '100vh', mt: 5}}>
+            <Box width={'100vw'} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', mt: 5}}>
                 <ThreeCircles
                     type="ThreeDots"
                     color="#5BC0BE"

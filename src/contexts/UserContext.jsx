@@ -18,7 +18,8 @@ export const UserProvider = ({ children }) => {
             return data.data;
         },
         onError: (error) => {
-            throw new Error(error.response?.data);
+            console.log(error)
+           return error;
         }
     })
 
