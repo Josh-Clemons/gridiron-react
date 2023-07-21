@@ -13,12 +13,13 @@ import Typography from '@mui/material/Typography';
 
 // Contexts
 import { UserContext } from '../../contexts/UserContext';
+import {ThreeCircles} from "react-loader-spinner";
 
 export default function LoginForm() {
     // Hooks
     const navigate = useNavigate();
     const { state } = useLocation();
-    const { signIn, signOut } = useContext(UserContext);
+    const { signIn, signOut, signinLoading } = useContext(UserContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState(null);
@@ -43,6 +44,19 @@ export default function LoginForm() {
             errorEmptyFields();
         }
     };
+
+    if (signinLoading) {
+        return (
+            <Box sx={{display: 'flex', height: '100vh', mt: 5}}>
+                <ThreeCircles
+                    type="ThreeDots"
+                    color="#5BC0BE"
+                    height={100}
+                    width={100}
+                />
+            </Box>
+        );
+    }
 
     return (
         <Container component="main" maxWidth="xs">

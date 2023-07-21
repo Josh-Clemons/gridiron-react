@@ -12,6 +12,7 @@ import useLeaguesByUser from '../../hooks/useLeaguesByUser';
 import FindLeagueButton from "../Buttons/FindLeagueButton.jsx";
 import CreateLeagueButton from "../Buttons/CreateLeagueButton.jsx";
 import LeagueItem from "../LeagueItem/LeagueItem";
+import {ThreeCircles} from "react-loader-spinner";
 
 export const Dashboard = () => {
     // Contexts
@@ -34,6 +35,19 @@ export const Dashboard = () => {
         }
     }, [leagues, user.username]);
 
+    if (isLoading) {
+        return (
+            <Box sx={{display: 'flex', height: '100vh', mt: 5}}>
+                <ThreeCircles
+                    type="ThreeDots"
+                    color="#5BC0BE"
+                    height={100}
+                    width={100}
+                />
+            </Box>
+        );
+    }
+
     return (
 
         <Box
@@ -47,7 +61,6 @@ export const Dashboard = () => {
                 minHeight: '100vh'
             }}
         >
-            {isLoading && <h1>hold up</h1>}
             {isError && <h1>shit is no bueno: {error.message}</h1>}
             <Typography sx={{ m: 2 }} variant="h4">Dashboard</Typography>
             <Box

@@ -13,11 +13,12 @@ import { useNavigate } from 'react-router-dom';
 
 // Contexts
 import { UserContext } from '../../contexts/UserContext';
+import {ThreeCircles} from "react-loader-spinner";
 
 export default function RegisterForm() {
   // Hooks
   const navigate = useNavigate();
-  const {signUp} = useContext(UserContext);
+  const { signUp, signupLoading } = useContext(UserContext);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,8 +35,19 @@ export default function RegisterForm() {
       setErrorMessage(e.toString());
     })
   }
+  if (signupLoading) {
+    return (
+        <Box sx={{display: 'flex', height: '100vh', mt: 5}}>
+          <ThreeCircles
+              type="ThreeDots"
+              color="#5BC0BE"
+              height={100}
+              width={100}
+          />
+        </Box>
+    );
+  }
 
-  // Render
   return (
       <Container component="main" maxWidth="xs">
         <Box

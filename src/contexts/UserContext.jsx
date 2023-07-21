@@ -1,12 +1,11 @@
-import {createContext, useState} from 'react';
-import {useMutation} from 'react-query';
+import { createContext, useState } from 'react';
+import { useMutation } from 'react-query';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
 export const UserContext = createContext();
 
-export const UserProvider = ({children}) => {
-
+export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(() => JSON.parse(sessionStorage.getItem('user')));
     const [token, setToken] = useState(user?.accessToken);
 
@@ -22,6 +21,8 @@ export const UserProvider = ({children}) => {
             throw new Error(error.response?.data);
         }
     })
+
+    const { isLoading: signinLoading } = signinMutation;
 
     const signupMutation = useMutation(({username, email, password}) => {
         const credentials = {username, password};
@@ -45,6 +46,7 @@ export const UserProvider = ({children}) => {
         },
     });
 
+    const { isLoading: signupLoading } = signupMutation;
 
     const signIn = (username, password) => {
         return signinMutation.mutateAsync({username, password});
@@ -61,7 +63,7 @@ export const UserProvider = ({children}) => {
     }
 
     return (
-        <UserContext.Provider value={{user, token, signIn, signOut, signUp}}>
+        <UserContext.Provider value={{user, token, signIn, signOut, signUp, signinLoading, signupLoading}}>
             {children}
         </UserContext.Provider>
     );
