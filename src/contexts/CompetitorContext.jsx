@@ -15,7 +15,7 @@ export const CompetitorProvider = ({children}) => {
 
     // Functions
     const fetchCompetitors = async () => {
-        const {data} = await axios.get(`http://localhost:8080/api/gamedata/competitors`, {
+        const {data} = await axios.get(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/gamedata/competitors`, {
             headers: {
                 'Authorization': `Bearer ${user.accessToken}`
             }

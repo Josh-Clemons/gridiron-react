@@ -45,7 +45,7 @@ const DeleteLeagueButton = ({ leagueDetails }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await axios.delete(`http://localhost:8080/api/league/delete?leagueId=${leagueDetails.id}`,
+        await axios.delete(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/league/delete?leagueId=${leagueDetails.id}`,
             {
                 headers: {
                     'Authorization': `Bearer ${user.accessToken}`
