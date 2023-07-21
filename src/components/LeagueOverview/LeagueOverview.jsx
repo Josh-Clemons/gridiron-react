@@ -133,10 +133,10 @@ const LeagueOverview = ({ picks }) => {
                         <TableHead>
                             <TableRow>
                                 <TableCell sx={{padding: '6px', maxWidth: '30vw'}}>User</TableCell>
-                                <TableCell sx={{padding: '6px', pl: 1}}>Score</TableCell>
                                 <TableCell sx={{padding: '6px', pl: 3}}>5 Pts</TableCell>
                                 <TableCell sx={{padding: '6px', pl: 3}}>3 Pts</TableCell>
                                 <TableCell sx={{padding: '6px', pl: 3}}>1 Pt</TableCell>
+                                <TableCell sx={{padding: '6px', pl: 1}}>Score</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -145,7 +145,6 @@ const LeagueOverview = ({ picks }) => {
                                     <StyledTableRow key={i}>
                                         <TableCell sx={{pl: 1, pr: 1, maxWidth: '30vw'}}><Typography variant='body1'
                                                                                                      noWrap={true}>{pick.owner}</Typography></TableCell>
-                                        <TableCell>{pick.weeklyScore}</TableCell>
                                         <TableCell>
                                             <Box
                                                 border={getBorderStyle(pick.valueFive, pick.isFiveWinner, pick.disableBorder)}
@@ -173,6 +172,7 @@ const LeagueOverview = ({ picks }) => {
                                                 {pick.valueOne}
                                             </Box>
                                         </TableCell>
+                                        <TableCell>{pick.weeklyScore}</TableCell>
                                     </StyledTableRow>
                                 )
                             })}
