@@ -53,6 +53,7 @@ export default function LoginForm() {
                     height={100}
                     width={100}
                 />
+                <Typography variant={"h6"}>This may take up to 30 seconds...</Typography>
             </Box>
         );
     }

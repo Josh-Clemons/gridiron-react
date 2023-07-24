@@ -2,6 +2,8 @@
     - dashboard
     - sign in / register (login can take a bit when the server first spins up)
 
+[x] add note to login/register loading spinner
+
 [] error handling for login/register problems (front-end only)
     - not connected
     - bad username/email
