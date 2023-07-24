@@ -32,7 +32,7 @@ export const UserProvider = ({ children }) => {
             .then((data) => {
                 return {...data, credentials};  // Return data and credentials together.
             }).catch((error) => {
-                throw new Error(error.response?.data);
+                throw new Error(error.response?.data?.message);
             });
     }, {
         onSuccess: async (data) => {
@@ -41,9 +41,6 @@ export const UserProvider = ({ children }) => {
             } catch (error) {
                 console.log('Error signing in after signup: ', error);
             }
-        },
-        onError: (error) => {
-            throw new Error(error.response?.data)
         },
     });
 

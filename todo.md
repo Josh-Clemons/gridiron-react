@@ -11,5 +11,5 @@
 
 [] fix pick spacing on mobile
 
-[] password length validation
+[] password length validation/user feedback
 

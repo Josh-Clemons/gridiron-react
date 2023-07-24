@@ -12,7 +12,7 @@ function TestApi() {
 
 
   const fetchLeagues = async () => {
-    await axios.get("https://gridiron-java-c95bfe4c87da.herokuapp.com/api/league/all", {
+    await axios.get(`http://localhost:8080/api/league/all`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -27,7 +27,7 @@ function TestApi() {
 
   const fetchGameDataFromEspn = async () => {
     console.log('fetching game data......')
-    await axios.get("https://gridiron-java-c95bfe4c87da.herokuapp.com/api/gamedata/espn", {
+    await axios.get("http://localhost:8080/api/gamedata/espn", {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -37,7 +37,7 @@ function TestApi() {
   }
 
   const fetchLeagueById = async () => {
-    await axios.get("https://gridiron-java-c95bfe4c87da.herokuapp.com/api/league/find-by-id?leagueId=" + leagueId, {
+    await axios.get("http://localhost:8080/api/league/find-by-id?leagueId=" + leagueId, {
       headers: {
         'Authorization': `Bearer ${token}`
       }

@@ -31,7 +31,6 @@ export default function RegisterForm() {
     await signUp(username, email, password).then(()=> {
       navigate('/dashboard');
     }).catch((e) => {
-      console.log(e);
       setErrorMessage(e.toString());
     })
   }
