@@ -17,6 +17,7 @@ import LandingPage from '../../pages/LandingPage.jsx';
 import LeagueDetailsPage from '../../pages/LeagueDetailsPage';
 import LoginPage from '../../pages/LoginPage.jsx';
 import { RegisterPage } from '../../pages/RegisterPage';
+import ResetPasswordPage from "../../pages/ResetPasswordPage.jsx";
 
 // Components & Assets
 import NavBar from '../NavBar/NavBar';
@@ -43,6 +44,7 @@ function App() {
                 <Route path='/landing' element={<LandingPage />} />
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/register' element={<RegisterPage />} />
+                <Route path='/password-reset/:accessCode/:email' element={<ResetPasswordPage />} />
                 {/* Protected routes */}
                 <Route path='/dashboard' element={<PrivateRoute><DashboardPage /></PrivateRoute>} />
                 <Route path='/test' element={<PrivateRoute><TestApi /></PrivateRoute>} />
