@@ -5,8 +5,6 @@ import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
@@ -33,7 +31,7 @@ const ResetPasswordPage = () => {
         await resetPassword(email, password, accessCode).then(()=>{
             navigate('/login');
         }).catch((error) => {
-            setErrorMessage(error.toString());
+            setErrorMessage(error.response.data.message);
         });
     };
 
@@ -100,13 +98,6 @@ const ResetPasswordPage = () => {
                     >
                         Reset Password
                     </Button>
-                    <Grid container>
-                        <Grid item>
-                            <Link onClick={() => navigate('/login')} variant="body1" sx={{ '&:hover': { cursor: "pointer" } }}>
-                                {"Already have an account? Sign in."}
-                            </Link>
-                        </Grid>
-                    </Grid>
                 </Box>
             </Box>
         </Container>
