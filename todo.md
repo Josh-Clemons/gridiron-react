@@ -15,3 +15,5 @@
 
 [] password length validation/user feedback
 
+[] make some shared styles
+    - buttons/modals at minimum

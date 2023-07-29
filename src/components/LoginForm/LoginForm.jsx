@@ -13,7 +13,8 @@ import Typography from '@mui/material/Typography';
 
 // Contexts
 import { UserContext } from '../../contexts/UserContext';
-import {ThreeCircles} from "react-loader-spinner";
+import { ThreeCircles } from "react-loader-spinner";
+import ForgotPasswordButton from '../Buttons/ForgotPasswordButton';
 
 export default function LoginForm() {
     // Hooks
@@ -46,7 +47,7 @@ export default function LoginForm() {
 
     if (!errorMessage && signinLoading) {
         return (
-            <Box width={'100vw'} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', mt: 5}}>
+            <Box width={'100vw'} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', mt: 5 }}>
                 <ThreeCircles
                     type="ThreeDots"
                     color="#5BC0BE"
@@ -115,6 +116,9 @@ export default function LoginForm() {
                             <Link onClick={() => navigate('/register')} variant="body1" sx={{ '&:hover': { cursor: "pointer" } }}>
                                 {"Don't have an account? Register"}
                             </Link>
+                        </Grid>
+                        <Grid item>
+                            <ForgotPasswordButton />
                         </Grid>
                     </Grid>
                 </Box>
