@@ -2,8 +2,9 @@
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
 import Modal from '@mui/material/Modal';
-import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
@@ -44,9 +45,13 @@ const ForgotPasswordButton = () => {
 
   return (
     <Box>
-      <Button  onClick={handleOpen} color={'success'} sx={{ width: 250, mb: 2, borderWidth: 2, '&:hover': { borderWidth: '2px' } }}>
-        Forgot password?
-      <SearchIcon sx={{ ml: 2 }} /></Button>
+      <Grid container>
+              <Grid item>
+                <Link onClick={handleOpen} variant="body1" sx={{ '&:hover': { cursor: "pointer" } }}>
+                  {"Forgot password?"}
+                </Link>
+              </Grid>
+            </Grid>
       <Modal
         open={open}
         onClose={handleClose}
@@ -57,6 +62,7 @@ const ForgotPasswordButton = () => {
           </Typography>
           <TextField
             required
+            autoFocus
             id="emailInput"
             label="Email"
             placeholder="gridiron@example.com"

@@ -2,7 +2,9 @@
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Container from '@mui/material/Container';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
@@ -14,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 // Contexts
 import { UserContext } from '../../contexts/UserContext';
 import {ThreeCircles} from "react-loader-spinner";
+import { passwordValidator } from '../../utils/PasswordUtils';
 
 export default function RegisterForm() {
   // Hooks
@@ -101,6 +104,16 @@ export default function RegisterForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
+            <Box display='flex' flexDirection='row' alignItems='center'>
+                        <Typography variant="body-2" pr="3px">
+                            Must be at least 6 characters
+                        </Typography>
+                        {password.length > 0 &&
+                            (passwordValidator(password) ?
+                                <CheckCircleOutlineIcon color={'success'} /> :
+                                <ErrorOutlineIcon color={'error'} />)
+                        }
+                    </Box>
             {errorMessage && <div>{errorMessage}</div>}
             <Button
                 type="submit"

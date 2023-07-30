@@ -112,7 +112,7 @@ export default function LoginForm() {
                         Sign In
                     </Button>
                     <Grid container>
-                        <Grid item>
+                        <Grid item xs={12}>
                             <Link onClick={() => navigate('/register')} variant="body1" sx={{ '&:hover': { cursor: "pointer" } }}>
                                 {"Don't have an account? Register"}
                             </Link>
