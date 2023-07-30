@@ -22,7 +22,6 @@ import ResetPasswordPage from "../../pages/ResetPasswordPage.jsx";
 // Components & Assets
 import NavBar from '../NavBar/NavBar';
 import PrivateRoute from '../PrivateRoute/PrivateRoute.jsx';
-import TestApi from '../../assets/TestApi';
 
 // CSS
 import 'react-toastify/dist/ReactToastify.css';
@@ -47,7 +46,6 @@ function App() {
                 <Route path='/password-reset/:accessCode/:email' element={<ResetPasswordPage />} />
                 {/* Protected routes */}
                 <Route path='/dashboard' element={<PrivateRoute><DashboardPage /></PrivateRoute>} />
-                <Route path='/test' element={<PrivateRoute><TestApi /></PrivateRoute>} />
                 <Route path='/league-detail/:inviteCode' element={<PrivateRoute><LeagueDetailsPage /></PrivateRoute>} />
                 <Route path='/find-league' element={<PrivateRoute><FindLeaguePage /></PrivateRoute>} />
                 <Route path='/create' element={<PrivateRoute><CreateLeaguePage /></PrivateRoute>} />

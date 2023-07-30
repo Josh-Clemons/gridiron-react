@@ -10,7 +10,7 @@ export const UserProvider = ({ children }) => {
     const [token, setToken] = useState(user?.accessToken);
 
     const signinMutation = useMutation(({ username, password }) => axios
-        .post(`http://localhost:8080/api/auth/signin`, { username, password }), {
+        .post(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/auth/signin`, { username, password }), {
         onSuccess: (data) => {
             setUser(data.data);
             setToken(data.data.accessToken);
@@ -27,7 +27,7 @@ export const UserProvider = ({ children }) => {
     const signupMutation = useMutation(({ username, email, password }) => {
         const credentials = { username, password };
 
-        return axios.post(`http://localhost:8080/api/auth/signup`, { username, email, password })
+        return axios.post(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/auth/signup`, { username, email, password })
             .then((data) => {
                 return { ...data, credentials };  // Return data and credentials together.
             }).catch((error) => {
@@ -45,7 +45,7 @@ export const UserProvider = ({ children }) => {
     const { isLoading: signupLoading } = signupMutation;
 
     const resetPasswordMutation = useMutation(({ email, newPassword, accessCode }) => axios
-        .put(`http://localhost:8080/api/auth/reset`, { email, newPassword, accessCode}), {
+        .put(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/auth/reset`, { email, newPassword, accessCode}), {
             onSuccess: (data) => {
                 return data.data;
             },

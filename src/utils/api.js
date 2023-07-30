@@ -29,7 +29,7 @@ export const fetchLeagueDetails = async ({queryKey}) => {
 };
 
 export const updateCompetitorData = async ({accessToken}) => {
-    const response = await axios.get(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/gamedata//update-db`, {
+    const response = await axios.get(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/gamedata/update-db`, {
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }

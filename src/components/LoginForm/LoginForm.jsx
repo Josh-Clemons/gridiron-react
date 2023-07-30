@@ -38,7 +38,7 @@ export default function LoginForm() {
             await signIn(username, password).then(() => {
                 navigate(state?.from || '/dashboard');
             }).catch((e) => {
-                setErrorMessage(e.message);
+                setErrorMessage(e.response?.data);
             })
         } else {
             errorEmptyFields();
