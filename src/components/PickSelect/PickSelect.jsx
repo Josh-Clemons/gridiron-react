@@ -60,9 +60,8 @@ const PickSelect = ({picks, week, value, setPicks}) => {
         ));
     };
 
-    // TODO take away the '&& pick.week < 9' for deployment
     const isPickStartDatePast = () => {
-        if (pick && pick.startDate && pick.week < 10) {
+        if (pick && pick.startDate) {
             const pickDate = new Date(pick.startDate);
             const currentDate = new Date();
         
@@ -87,8 +86,7 @@ const PickSelect = ({picks, week, value, setPicks}) => {
 
     const getBorderColor = (pick) => {
         const startDate = new Date(pick.startDate);
-        // TODO take away the '|| pick.week > 9' for deployment
-        if (startDate > new Date() || pick.team === "" || pick.week > 9) {
+        if (startDate > new Date() || pick.team === "") {
             return {border: "none",}
         } else {
             return {
