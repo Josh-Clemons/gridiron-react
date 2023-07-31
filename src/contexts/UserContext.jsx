@@ -18,7 +18,6 @@ export const UserProvider = ({ children }) => {
             return data.data;
         },
         onError: (error) => {
-            console.log(error)
             return error;
         }
     })
@@ -44,17 +43,19 @@ export const UserProvider = ({ children }) => {
     });
     const { isLoading: signupLoading } = signupMutation;
 
-    const resetPasswordMutation = useMutation(({ email, newPassword, accessCode }) => axios
-        .put(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/auth/reset`, { email, newPassword, accessCode}), {
-            onSuccess: (data) => {
-                return data.data;
+    const resetPasswordMutation = useMutation(({ email, newPassword, accessCode }) => {
+        
+        return axios.put(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/auth/reset`, { email, newPassword, accessCode}), {
+            onSuccess: async () => {
+                let user = await signIn(email, newPassword);
+                console.log(user)
             },
             onError: (error) => {
                 console.log(error);
                 return error;
             }
         }
-    );
+    });
     const { isLoading: resetPasswordLoading} = resetPasswordMutation;
 
 

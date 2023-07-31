@@ -99,7 +99,7 @@ const PickSelect = ({picks, week, value, setPicks}) => {
 
 
     return (
-        <Box border={pick && getBorderColor(pick)} p={.5} m={-.5} sx={{borderRadius: 1}}>
+        <Box border={pick && getBorderColor(pick)}  sx={{borderRadius: 1}}>
             <FormControl variant="standard" fullWidth>
                 <NativeSelect
                     value={pick ? pick.team : ""}

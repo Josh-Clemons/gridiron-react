@@ -37,9 +37,9 @@ const ResetPasswordPage = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         await resetPassword(email, password1, accessCode).then(() => {
-            navigate('/login');
+            navigate('/dashboard');
         }).catch((error) => {
-            setErrorMessage(error.response.data.message);
+            setErrorMessage(error.response?.data?.message);
         });
     };
 
