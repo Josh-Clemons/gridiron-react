@@ -2,6 +2,7 @@ export function getSelectOptions(competitors, week, team) {
     let options = [];
 
     const currentDate = new Date();
+    // TODO fix < to > when necessary
     competitors && competitors
         .filter(c => c.week === week && new Date(c.startDate) > currentDate)
         .map(c => {
