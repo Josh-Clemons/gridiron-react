@@ -44,18 +44,23 @@ export const UserProvider = ({ children }) => {
     const { isLoading: signupLoading } = signupMutation;
 
     const resetPasswordMutation = useMutation(({ email, newPassword, accessCode }) => {
-        
-        return axios.put(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/auth/reset`, { email, newPassword, accessCode}), {
-            onSuccess: async () => {
-                let user = await signIn(email, newPassword);
+            const credentials = {email, newPassword};
+            return axios.put(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/auth/reset`,
+                { email, newPassword, accessCode})
+                .then((data) => {
+                    return {...data, credentials};
+                });
+        }, {
+            onSuccess: async (data) => {
+                let user = await signIn(data.credentials.email, data.credentials.newPassword);
                 console.log(user)
             },
             onError: (error) => {
                 console.log(error);
-                return error;
+                throw error;
             }
         }
-    });
+    );
     const { isLoading: resetPasswordLoading} = resetPasswordMutation;
 
 

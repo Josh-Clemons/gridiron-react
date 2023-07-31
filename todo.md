@@ -7,6 +7,8 @@
     - bad username/email
     - already exists
 
+[] fix error logging for password reset in prod
+
 [x] ability to reset password
 
 [] fix pick spacing on mobile

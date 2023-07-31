@@ -15,7 +15,6 @@ import { useNavigate } from 'react-router-dom';
 
 // Contexts
 import { UserContext } from "../contexts/UserContext";
-import { ThreeCircles } from "react-loader-spinner";
 import { passwordValidator } from "../utils/PasswordUtils";
 
 
@@ -23,7 +22,7 @@ const ResetPasswordPage = () => {
     const { accessCode, email } = useParams();
     // Hooks
     const navigate = useNavigate();
-    const { resetPassword, resetPasswordLoading } = useContext(UserContext)
+    const { resetPassword } = useContext(UserContext)
     const [password1, setPassword1] = useState('');
     const [password2, setPassword2] = useState('');
     const [validPassword, setValidPassword] = useState(false);
@@ -39,11 +38,10 @@ const ResetPasswordPage = () => {
         await resetPassword(email, password1, accessCode).then(() => {
             navigate('/dashboard');
         }).catch((error) => {
-            setErrorMessage(error.response?.data?.message);
+            setErrorMessage(error.response?.data);
         });
     };
 
-    // TODO get this finished, needs to validate passwords and control UI feedback (can be multiple things)
     const passwordCheck = () => {
         if (password1 === password2 && password1 !== '') {
             setValidPassword(passwordValidator(password1));
@@ -51,19 +49,6 @@ const ResetPasswordPage = () => {
             setValidPassword(false);
         }
 
-    }
-
-    if (resetPasswordLoading) {
-        return (
-            <Box width={'100vw'} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', mt: 5 }}>
-                <ThreeCircles
-                    type="ThreeDots"
-                    color="#5BC0BE"
-                    height={100}
-                    width={100}
-                />
-            </Box>
-        );
     }
 
     return (
@@ -84,17 +69,21 @@ const ResetPasswordPage = () => {
                 <Typography component="h1" variant="h5">
                     Reset Password
                 </Typography>
-                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                <Box component="form"
+                     onSubmit={handleSubmit}
+                     noValidate
+                     sx={{ mt: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                >
                     <TextField
                         margin="normal"
                         required
-                        fullWidth
                         name="password1"
                         label="Password"
                         type="password"
                         id="password1"
                         value={password1}
                         onChange={(e) => setPassword1(e.target.value)}
+                        sx={{ width: '90vw', maxWidth: '400px'}}
                     />
                     <Box display='flex' flexDirection='row' alignItems='center'>
                         <Typography variant="body-2" pr="3px">
@@ -117,6 +106,7 @@ const ResetPasswordPage = () => {
                         id="password2"
                         value={password2}
                         onChange={(e) => setPassword2(e.target.value)}
+                        sx={{ width: '90vw', maxWidth: '400px'}}
                     />
                     {errorMessage && <div>{errorMessage}</div>}
                     <Button
