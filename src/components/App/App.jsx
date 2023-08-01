@@ -44,12 +44,12 @@ function App() {
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/register' element={<RegisterPage />} />
                 <Route path='/password-reset/:accessCode/:email' element={<ResetPasswordPage />} />
+                <Route path='/about' element={<AboutPage />} />
                 {/* Protected routes */}
                 <Route path='/dashboard' element={<PrivateRoute><DashboardPage /></PrivateRoute>} />
                 <Route path='/league-detail/:inviteCode' element={<PrivateRoute><LeagueDetailsPage /></PrivateRoute>} />
                 <Route path='/find-league' element={<PrivateRoute><FindLeaguePage /></PrivateRoute>} />
                 <Route path='/create' element={<PrivateRoute><CreateLeaguePage /></PrivateRoute>} />
-                <Route path='/about' element={<PrivateRoute><AboutPage /></PrivateRoute>} />
               </Routes>
               <ToastContainer
                   position="top-right"
