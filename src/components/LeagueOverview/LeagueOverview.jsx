@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import { NativeSelect, FormControl } from '@mui/material';
 import { UserContext } from '../../contexts/UserContext';
 import { StyledTableRow } from '../../styles/SharedStyles';
+import DownloadPicksButton from "../Buttons/DownloadPicksButton.jsx";
 
 const LeagueOverview = ({ picks }) => {
     // Hooks
@@ -130,6 +131,7 @@ const LeagueOverview = ({ picks }) => {
 
     return (
         <Box width={"100%"} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <DownloadPicksButton picks={picks}/>
             <Box sx={{
                 display: 'flex',
                 flexDirection: 'row',

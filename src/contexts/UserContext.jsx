@@ -52,11 +52,9 @@ export const UserProvider = ({ children }) => {
                 });
         }, {
             onSuccess: async (data) => {
-                let user = await signIn(data.credentials.email, data.credentials.newPassword);
-                console.log(user)
+                await signIn(data.credentials.email, data.credentials.newPassword);
             },
             onError: (error) => {
-                console.log(error);
                 throw error;
             }
         }
