@@ -64,23 +64,40 @@ const LeagueOverview = ({ picks }) => {
             if (pick.competitor && pick.competitor.team) {
                 const team = pick.competitor.team.abbreviation;
 
-                // only show other players picks if now is after the start date
                 const startDate = new Date(pick.competitor.startDate)
                 const now = new Date();
+                // only show other players picks if now is after the start date
                 if (now > startDate || pick.owner.username === user.username) {
-                    results[index].disableBorder = false;
-                    if (results[index] && pick.value === 1) {
-                        results[index].valueOne = team;
-                        results[index].isOneWinner = pick.competitor.winner;
-                        pick.competitor.winner && results[index].weeklyScore++;
-                    } else if (results[index] && pick.value === 3) {
-                        results[index].valueThree = team;
-                        results[index].isThreeWinner = pick.competitor.winner;
-                        pick.competitor.winner && (results[index].weeklyScore += 3);
-                    } else if (results[index] && pick.value === 5) {
-                        results[index].valueFive = team;
-                        results[index].isFiveWinner = pick.competitor.winner;
-                        pick.competitor.winner && (results[index].weeklyScore += 5);
+                    if (results[index]) {
+                        // disables border until after start date
+                        if (now > startDate) {
+                            results[index].disableBorder = false;
+                        }
+
+                        let increment;
+                        switch (pick.value) {
+                            case 1:
+                                results[index].valueOne = team;
+                                results[index].isOneWinner = pick.competitor.winner;
+                                increment = 1;
+                                break;
+                            case 3:
+                                results[index].valueThree = team;
+                                results[index].isThreeWinner = pick.competitor.winner;
+                                increment = 3;
+                                break;
+                            case 5:
+                                results[index].valueFive = team;
+                                results[index].isFiveWinner = pick.competitor.winner;
+                                increment = 5;
+                                break;
+                            default:
+                                break;
+                        }
+
+                        if (pick.competitor.winner && increment) {
+                            results[index].weeklyScore += increment;
+                        }
                     }
                 }
             }
@@ -95,6 +112,7 @@ const LeagueOverview = ({ picks }) => {
 
         // sorting the array by username in alphabetical order
         results.sort((a, b) => a.owner.localeCompare(b.owner));
+
         return results;
     }
 
@@ -143,8 +161,9 @@ const LeagueOverview = ({ picks }) => {
                             {weeklyPicks && weeklyPicks.map((pick, i) => {
                                 return (
                                     <StyledTableRow key={i}>
-                                        <TableCell sx={{pl: 1, pr: 1, maxWidth: '30vw'}}><Typography variant='body1'
-                                                                                                     noWrap={true}>{pick.owner}</Typography></TableCell>
+                                        <TableCell sx={{pl: 1, pr: 1, maxWidth: '30vw'}}>
+                                            <Typography variant='body1' noWrap={true}>{pick.owner}</Typography>
+                                        </TableCell>
                                         <TableCell>
                                             <Box
                                                 border={getBorderStyle(pick.valueFive, pick.isFiveWinner, pick.disableBorder)}
