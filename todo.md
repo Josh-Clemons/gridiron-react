@@ -7,13 +7,17 @@
     - bad username/email
     - already exists
 
-[] fix error logging for password reset in prod
+[x] fix error logging for password reset in prod
 
 [x] ability to reset password
 
-[] fix pick spacing on mobile
+[x] fix pick spacing on mobile
 
 [x] password length validation/user feedback
+
+[] update about page
+
+[] make rules more concise 
 
 [] make some shared styles
     - buttons/modals at minimum

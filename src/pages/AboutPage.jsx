@@ -1,15 +1,23 @@
-import UpdateCompetitorsButton from "../components/Buttons/UpdateCompetitorsButton.jsx";
 import Box from "@mui/material/Box";
-import {useContext} from "react";
-import {UserContext} from "../contexts/UserContext.jsx";
+import {Typography} from "@mui/material";
 
 const AboutPage = () => {
-    const {user} = useContext(UserContext);
 
     return (
         <>
-            <Box sx={{minHeight: '100vh'}}>
-                <UpdateCompetitorsButton />
+            <Box p={3} sx={{minHeight: '100vh'}}>
+                <Typography variant={'h3'}>
+                    Please enjoy Grid Iron Picks!
+                </Typography>
+                <br/>
+                <Typography variant={'h6'}>
+                    Did you find a bug? Email gridironpickem@outlook.com
+                </Typography>
+                <br/>
+                <br/>
+                <Typography variant={'body1'}>
+                    A big thanks to Mark Swan for coming up with the idea for Grid Iron and running it for over 15 years with just email and spreadsheets!
+                </Typography>
             </Box>
         </>
     )
