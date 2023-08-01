@@ -44,37 +44,21 @@ const RulesButton = ({ size, width, variant, margin }) => {
                         Rules:
                     </Typography>
                     <Typography variant='body1' paragraph={true} style={{ width: '95%', height: '60vh', overflow: 'auto' }}>
-                        Each week, you must select 3 different teams to win their games.  Do not worry about point spreads.  You only need to select wins.
+                        Each week, pick 3 different teams to win their games, ignoring point spreads. Assign each a point value: 5, 3, or 1. You earn these points if the team wins.
                         <br />
                         <br />
-                        Your 3 teams must be placed in the following categories:  5 points, 3 points and 1 point.
+                        For example, choosing IND (5), BAL (3), GB (1) and having the Colts and Packers win would score 6 points (5+1). A clean sweep (all 3 teams winning) adds a 2-point bonus, netting 11 points total.
                         <br />
                         <br />
-                        If your team wins, you will receive the points in the respective categories.
+                        Teams can't be picked for the same point category more than once per season. For instance, the Colts can be a 5-point choice just once. Make your selections before game time or score no points, and note Thursday games need earlier picks.
                         <br />
                         <br />
-                        For example, let's say you select the IND (5), BAL (3) and GB (1).  If only the Colts and Packers win that week, you would receive 6 points (IND 5, GB 1).
+                        Other rules:
                         <br />
+                        -Ties count as losses.
                         <br />
-                        If in any week of the season, your 3 choices result in 3 wins, you will be awarded 2 additional points (11 points total for that week).
+                        -You can't pick both teams from the same game.
                         <br />
-                        <br />
-                        Once you select a team in a point category, you cannot place them in that same point category for the remainder of the season.
-                        <br />
-                        <br />
-                        For example, you can only select the Colts to win for 5 points one time in the season.
-                        <br />
-                        <br />
-                        Selections must be made prior to the game time of your picks or you receive no points. There are Thursday games that will need earlier submittals.
-                        <br />
-                        <br />
-                        Additional Rules:
-                        <br />
-                        -If a game results in a tie, it's considered a loss in Grid Iron
-                        <br />
-                        -Only one team from the same game can be selected.
-                        <br />
-
                     </Typography>
                     <Stack spacing={1} direction='row-reverse'>
                         <Button variant='outlined' color={'primary'} onClick={handleClose} sx={{ width: 80 }}>Close</Button>
