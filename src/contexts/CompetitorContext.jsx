@@ -20,7 +20,6 @@ export const CompetitorProvider = ({children}) => {
                 'Authorization': `Bearer ${user.accessToken}`
             }
         })
-        console.log(data);
         return data;
     }
 
