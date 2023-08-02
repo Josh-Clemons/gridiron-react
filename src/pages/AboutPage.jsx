@@ -1,7 +1,11 @@
 import Box from "@mui/material/Box";
-import {Typography} from "@mui/material";
+import {Button, Typography} from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack.js";
+import {useNavigate} from "react-router-dom";
 
 const AboutPage = () => {
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -18,6 +22,14 @@ const AboutPage = () => {
                 <Typography variant={'body1'}>
                     A big thanks to Mark Swan for coming up with the idea for Grid Iron and running it for over 15 years with just email and spreadsheets!
                 </Typography>
+                <br/>
+                <br/>
+                <Button variant="outlined" onClick={() => navigate(-1)} size='small' sx={{
+                    width: 125,
+                    m: 1,
+                    borderWidth: 2,
+                    '&:hover': {borderWidth: '2px'}
+                }}>Back<ArrowBackIcon sx={{ml: 2}}/></Button>
             </Box>
         </>
     )

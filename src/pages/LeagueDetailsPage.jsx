@@ -20,6 +20,7 @@ import {UserContext} from "../contexts/UserContext";
 // Hooks
 import useLeaguePicks from "../hooks/useLeaguePicks";
 import useScrollToTop from "../hooks/useScrollToTop.js";
+import {checkIsLeagueMember, checkIsLeagueOwner} from "../utils/LeagueUtils.js";
 
 
 const LeagueDetailsPage = () => {
@@ -102,16 +103,9 @@ const LeagueDetailsPage = () => {
             })
         }));
 
-        if (picks?.length > 0) {
-            if (picks[0].league.leagueOwner === user.username) {
-                setIsLeagueOwner(true);
-            } else if (picks?.some(pick => pick.owner.id === user.id)) {
-                setIsLeagueMember(true);
-            } else {
-                setIsLeagueOwner(false);
-                setIsLeagueMember(false);
-            }
-        }
+        setIsLeagueOwner(checkIsLeagueOwner(picks, user));
+        setIsLeagueMember(checkIsLeagueMember(picks, user));
+
     }, [picks, user.id, user.username])
 
 
