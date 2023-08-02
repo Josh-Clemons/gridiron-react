@@ -14,11 +14,17 @@ import { NativeSelect, FormControl } from '@mui/material';
 import { UserContext } from '../../contexts/UserContext';
 import { StyledTableRow } from '../../styles/SharedStyles';
 import DownloadPicksButton from "../Buttons/DownloadPicksButton.jsx";
+import {checkIsLeagueOwner} from "../../utils/LeagueUtils.js";
 
 const LeagueOverview = ({ picks }) => {
     // Hooks
     const { user } = useContext(UserContext);
     const [weeklyPicks, setWeeklyPicks] = useState([]);
+    const [isLeagueOwner, setIsLeagueOwner] = useState(false);
+
+    useEffect(()=> {
+        setIsLeagueOwner(checkIsLeagueOwner(picks, user))
+    }, [picks])
 
     const handleWeekChange = (event) => {
         const week = Number(event.target.value);
@@ -131,7 +137,7 @@ const LeagueOverview = ({ picks }) => {
 
     return (
         <Box width={"100%"} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <DownloadPicksButton picks={picks}/>
+            {isLeagueOwner && <DownloadPicksButton picks={picks}/>}
             <Box sx={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -147,6 +153,9 @@ const LeagueOverview = ({ picks }) => {
                     </NativeSelect>
                 </FormControl>
             </Box>
+            <Typography sx={{fontSize: 12, fontStyle: 'italic'}}>
+                Other user's picks shown after game starts
+            </Typography>
             <Box width={'100%'} mb={'80px'}>
                 <TableContainer component={Paper} sx={{marginTop: '20px'}}>
                     <Table size='small' sx={{width: '100%'}}>

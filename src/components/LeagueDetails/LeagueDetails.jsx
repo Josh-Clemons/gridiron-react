@@ -31,6 +31,7 @@ const LeagueDetails = ({ isMember, isOwner, leagueDetails }) => {
     const [openCopied, setOpenCopied] = useState(false);
     const [loading, setLoading] = useState(true);
 
+    console.log("isMember: ", isMember, "\n", "isOwner:", isOwner);
     // Effects
     useEffect(() => {
         if (leagueDetails) setLoading(false);
@@ -181,7 +182,7 @@ const LeagueDetails = ({ isMember, isOwner, leagueDetails }) => {
                             </Box>
                         }
                         {isOwner && <DeleteLeagueButton leagueDetails={leagueDetails}/>}
-                        {isMember && <LeaveLeagueButton leagueDetails={leagueDetails}/>}
+                        {isMember && !isOwner && <LeaveLeagueButton leagueDetails={leagueDetails}/>}
                     </Box>
                 </AccordionDetails>
             </Accordion>
