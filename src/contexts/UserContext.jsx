@@ -2,11 +2,12 @@ import { createContext, useState } from 'react';
 import { useMutation } from 'react-query';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import Cookies from 'js-cookie';
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(() => JSON.parse(sessionStorage.getItem('user')));
+    const [user, setUser] = useState(Cookies.get('user'));
     const [token, setToken] = useState(user?.accessToken);
 
     const signinMutation = useMutation(({ username, password }) => axios
@@ -14,7 +15,7 @@ export const UserProvider = ({ children }) => {
         onSuccess: (data) => {
             setUser(data.data);
             setToken(data.data.accessToken);
-            sessionStorage.setItem('user', JSON.stringify(data.data));
+            Cookies.set('user', JSON.stringify(data.data), { expires: 30, secure: true });
             return data.data;
         },
         onError: (error) => {
@@ -75,7 +76,7 @@ export const UserProvider = ({ children }) => {
     }
 
     const signOut = () => {
-        sessionStorage.setItem('user', null);
+        Cookies.remove('user');
         setUser(null);
         setToken(null);
     }

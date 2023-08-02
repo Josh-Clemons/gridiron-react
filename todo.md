@@ -15,9 +15,9 @@
 
 [x] password length validation/user feedback
 
-[] update about page
+[x] update about page
 
-[] make rules more concise 
+[x] make rules more concise 
 
 [] make some shared styles
     - buttons/modals at minimum
