@@ -7,7 +7,10 @@ import Cookies from 'js-cookie';
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(Cookies.get('user'));
+    const [user, setUser] = useState(() => {
+        const cookie = Cookies.get('user');
+        return cookie ? JSON.parse(cookie) : null;
+    });
     const [token, setToken] = useState(user?.accessToken);
 
     const signinMutation = useMutation(({ username, password }) => axios
