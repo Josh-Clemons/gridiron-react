@@ -1,6 +1,6 @@
 // Libraries
 import { useContext, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -15,11 +15,11 @@ import Typography from '@mui/material/Typography';
 import { UserContext } from '../../contexts/UserContext';
 import { ThreeCircles } from "react-loader-spinner";
 import ForgotPasswordButton from '../Buttons/ForgotPasswordButton';
+import {passwordValidator} from "../../utils/PasswordUtils.js";
 
 export default function LoginForm() {
     // Hooks
     const navigate = useNavigate();
-    const { state } = useLocation();
     const { signIn, signOut, signinLoading } = useContext(UserContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -32,11 +32,12 @@ export default function LoginForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        signOut()
+        signOut();
         // continue only if user/email are not blank
-        if (username !== '' && password !== '') {
+        if (username !== '' && passwordValidator(password)) {
             await signIn(username, password).then(() => {
-                navigate(state?.from || '/dashboard');
+                const preLoginRoute = sessionStorage.getItem('preLoginRoute');
+                navigate(preLoginRoute || '/dashboard');
             }).catch((e) => {
                 setErrorMessage(e.response?.data);
             })

@@ -37,7 +37,8 @@ export default function RegisterForm() {
         event.preventDefault();
 
         await signUp(username, email, password).then(() => {
-            navigate('/dashboard');
+            const preLoginRoute = sessionStorage.getItem('preLoginRoute');
+            navigate(preLoginRoute || '/dashboard');
         }).catch((e) => {
             setErrorMessage(e.message);
         })
