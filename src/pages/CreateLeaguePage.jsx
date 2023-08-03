@@ -37,7 +37,7 @@ const CreateLeaguePage = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await axios.post(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/league/create`, {
+        await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/league/create`, {
             leagueName: leagueName,
             maxUsers: maxUsers,
             isPrivate: isPrivate

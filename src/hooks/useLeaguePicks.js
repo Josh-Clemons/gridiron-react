@@ -7,7 +7,7 @@ function useLeaguePicks(code) {
     const {user} = useContext(UserContext);
 
     return useQuery(['leaguePicks', code], async () => {
-        const response = await axios.get(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/pick/all-league-picks?inviteCode=${code}`, {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/pick/all-league-picks?inviteCode=${code}`, {
             headers: {
                 'Authorization': `Bearer ${user.accessToken}`
             }

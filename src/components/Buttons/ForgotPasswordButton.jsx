@@ -35,7 +35,7 @@ const ForgotPasswordButton = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     handleClose();
-    await axios.put(`https://gridiron-java-c95bfe4c87da.herokuapp.com/api/email/password-reset-request?email=${email}`)
+    await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/email/password-reset-request?email=${email}`)
       .then(() => {
         successAlert("Email Sent");
       }).catch(() => {
