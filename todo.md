@@ -22,4 +22,4 @@
 [] make some shared styles
     - buttons/modals at minimum
 
-[] store user info longer, refresh tokens?
+[x] store user info longer, refresh tokens?

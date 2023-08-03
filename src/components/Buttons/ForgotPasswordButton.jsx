@@ -35,7 +35,7 @@ const ForgotPasswordButton = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     handleClose();
-    await axios.put(`http://localhost:8080/api/email/password-reset-request?email=${email}`)
+    await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/email/password-reset-request?email=${email}`)
       .then(() => {
         successAlert("Email Sent");
       }).catch(() => {

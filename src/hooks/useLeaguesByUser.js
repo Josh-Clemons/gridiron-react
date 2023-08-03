@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function useLeaguesByUser(user) {
   return useQuery(['userLeagues', user.id], async () => {
-    const response = await axios.get(`http://localhost:8080/api/league/all-for-user`, {
+    const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/league/all-for-user`, {
       headers: {
         'Authorization': `Bearer ${user.accessToken}`
       }
