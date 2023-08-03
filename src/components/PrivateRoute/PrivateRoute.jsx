@@ -12,6 +12,13 @@ const PrivateRoute = ({children}) => {
     const {user} = useContext(UserContext);
     const location = useLocation();
 
+    if(!user) {
+        sessionStorage.setItem('preLoginRoute', location.pathname);
+        console.log('preLoginRoute', location.pathname);
+    } else {
+        sessionStorage.removeItem('preLoginRoute');
+    }
+
     return user
         ? <CompetitorProvider>{children}</CompetitorProvider>
         : <Navigate to="/login" state={{from: location}}/>;

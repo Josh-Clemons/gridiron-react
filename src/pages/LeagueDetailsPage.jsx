@@ -2,7 +2,7 @@
 import {useContext, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {useQuery} from "react-query";
-import {Box, ButtonGroup, Button} from '@mui/material';
+import {Box, ButtonGroup, Button, Typography} from '@mui/material';
 
 // Components
 import LeagueStandings from "../components/LeagueStandings/LeagueStandings.jsx";
@@ -118,6 +118,7 @@ const LeagueDetailsPage = () => {
                     height={100}
                     width={100}
                 />
+                <Typography variant={"h6"}>This may take up to 30 seconds...</Typography>
             </Box>
         )
     }
