@@ -101,6 +101,9 @@ export default function NavBar() {
                     <Button size='large' sx={{ justifyContent: 'flex-start' }} onClick={() => logout()}>
                         Logout
                     </Button>
+                    <Button size='large' sx={{ justifyContent: 'flex-start' }} onClick={() => navigate('/help')}>
+                        Help
+                    </Button>
                     <Button size='large' sx={{ justifyContent: 'flex-start' }} onClick={() => navigate('/about')}>
                         About
                     </Button>
@@ -112,6 +115,9 @@ export default function NavBar() {
                     </Button>
                     <Button size='large' sx={{ justifyContent: 'flex-start' }} onClick={() => navigate('/register')}>
                         Register
+                    </Button>
+                    <Button size='large' sx={{ justifyContent: 'flex-start' }} onClick={() => navigate('/help')}>
+                        Help
                     </Button>
                     <Button size='large' sx={{ justifyContent: 'flex-start' }} onClick={() => navigate('/about')}>
                         About
