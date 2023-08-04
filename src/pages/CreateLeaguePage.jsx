@@ -123,10 +123,12 @@ const CreateLeaguePage = () => {
                     marginBottom: "8px",
                     borderWidth: 2,
                     '&:hover': {borderWidth: '2px'}
-                }}>Create<AddCircleIcon sx={{ml: 2}}/></Button>
+                }}>
+                    Create<AddCircleIcon sx={{ml: 2}}/>
+                </Button>
             </Box>
             <Button variant="outlined" onClick={() => navigate('/dashboard')} sx={{
-                width: "250px",
+                width: "100%",
                 position: "fixed",
                 bottom: 60,
                 borderWidth: 2,

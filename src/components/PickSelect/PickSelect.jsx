@@ -31,14 +31,18 @@ const PickSelect = ({picks, week, value, setPicks}) => {
         const selectedOption = event.target.value;
         const selectedCompetitor = competitors.find(c => c.week === week && c.team.abbreviation === selectedOption)
 
-        if (selectedOption != "") {
+        if (selectedOption !== "") {
             if (validateEventId(selectedCompetitor)) {
                 errorAlert("Can't have two teams from the same game in a given week");
                 return;
             }
 
             if (validateTeamForValue(selectedOption)) {
-                errorAlert(`Can't pick ${selectedOption} twice for value ${value}`);
+                if (value === 1) {
+                    errorAlert(`Can't pick ${selectedOption} twice for ${value} point`);
+                } else {
+                    errorAlert(`Can't pick ${selectedOption} twice for ${value} points`);
+                }
                 return;
             }
         }
