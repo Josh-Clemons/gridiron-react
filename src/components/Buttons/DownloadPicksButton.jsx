@@ -4,7 +4,6 @@ import Papa from 'papaparse';
 import PropTypes from 'prop-types';
 
 const DownloadPicksButton = ({picks}) => {
-    console.log(picks);
     const simplifiedPicks = picks.map(pick => ({
         user: pick.owner.username,
         week: pick.week,

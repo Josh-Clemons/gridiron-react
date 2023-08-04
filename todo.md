@@ -1,25 +1,11 @@
-[x] loading spinners for:
-    - dashboard
-    - sign in / register (login can take a bit when the server first spins up)
+[] fix create button spacing on create league page
 
-[x] error handling for login/register problems (front-end only)
-    - not connected
-    - bad username/email
-    - already exists
+[] create a help page
 
-[x] fix error logging for password reset in prod
+[] remove used picks from select options
 
-[x] ability to reset password
-
-[x] fix pick spacing on mobile
-
-[x] password length validation/user feedback
-
-[] update about page
-
-[] make rules more concise 
+[] change "value ${value}" to "${value} points" in pick error message
 
 [] make some shared styles
-    - buttons/modals at minimum
+- buttons/modals at minimum
 
-[x] store user info longer, refresh tokens?
