@@ -59,3 +59,11 @@ export const inviteNewMember = ((to, inviteCode, accessToken) => {
         })
 })
 
+export const createHelpTicket = ((email, subject, message) => {
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/email/help`, {
+        email: email,
+        subject: subject,
+        message: message
+    })
+})
+

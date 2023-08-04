@@ -26,6 +26,7 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute.jsx';
 // CSS
 import 'react-toastify/dist/ReactToastify.css';
 import AboutPage from "../../pages/AboutPage.jsx";
+import HelpPage from "../../pages/HelpPage.jsx";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ function App() {
                 <Route path='/register' element={<RegisterPage />} />
                 <Route path='/password-reset/:accessCode/:email' element={<ResetPasswordPage />} />
                 <Route path='/about' element={<AboutPage />} />
+                <Route path='/help' element={<HelpPage />} />
                 {/* Protected routes */}
                 <Route path='/dashboard' element={<PrivateRoute><DashboardPage /></PrivateRoute>} />
                 <Route path='/league-detail/:inviteCode' element={<PrivateRoute><LeagueDetailsPage /></PrivateRoute>} />
