@@ -14,7 +14,6 @@ const PrivateRoute = ({children}) => {
 
     if(!user) {
         sessionStorage.setItem('preLoginRoute', location.pathname);
-        console.log('preLoginRoute', location.pathname);
     } else {
         sessionStorage.removeItem('preLoginRoute');
     }

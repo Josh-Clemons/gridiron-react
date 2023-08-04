@@ -154,7 +154,7 @@ const LeagueOverview = ({ picks }) => {
                 </FormControl>
             </Box>
             <Typography sx={{fontSize: 12, fontStyle: 'italic'}}>
-                Other user's picks shown after game starts
+                Other user's picks available after game starts
             </Typography>
             <Box width={'100%'} mb={'80px'}>
                 <TableContainer component={Paper} sx={{marginTop: '20px'}}>
