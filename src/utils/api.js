@@ -56,7 +56,6 @@ export const inviteNewMember = ((to, inviteCode, accessToken) => {
         })
         .catch(error => {
             errorAlert("Error sending email, try again later")
-            console.log(error);
         })
 })
 

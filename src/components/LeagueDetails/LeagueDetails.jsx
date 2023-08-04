@@ -31,7 +31,6 @@ const LeagueDetails = ({ isMember, isOwner, leagueDetails }) => {
     const [openCopied, setOpenCopied] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    console.log("isMember: ", isMember, "\n", "isOwner:", isOwner);
     // Effects
     useEffect(() => {
         if (leagueDetails) setLoading(false);
@@ -87,8 +86,12 @@ const LeagueDetails = ({ isMember, isOwner, leagueDetails }) => {
                     bgcolor: "#1C2541"
                 }}
             >
-                <Typography textAlign={'center'} variant='h6' fontSize={'16'}>League Name: <Box fontSize={30}
-                                                                                                m={1}>{leagueDetails?.leagueName}</Box></Typography>
+                <Typography textAlign={'center'} variant='h6' fontSize={'16'} m={1}>
+                    League Name:
+                </Typography>
+                <Typography fontSize={30}>
+                    {leagueDetails?.leagueName}
+                </Typography>
                 <Stack
                     direction="row"
                     sx={{
@@ -131,7 +134,14 @@ const LeagueDetails = ({ isMember, isOwner, leagueDetails }) => {
                     expandIcon={<ExpandMoreIcon/>}
                     id="leagueDetailsAccordion"
                 >
-                    <Typography sx={{fontSize: 18}}>League Details</Typography>
+                    <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
+                        <Typography fontSize={18}>
+                            League Details
+                        </Typography>
+                        <Typography variant={"body2"} pl={2}>
+                            (click for info)
+                        </Typography>
+                    </Box>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Stack direction={'row'}>

@@ -14,7 +14,6 @@ function useSavePicks() {
         }
     }), {
         onError: (error) => {
-            console.log("Error saving picks:", error);
             errorAlert("Error saving picks...");
         },
         onSuccess: (data) => {
