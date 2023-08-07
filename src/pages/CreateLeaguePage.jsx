@@ -90,8 +90,9 @@ const CreateLeaguePage = () => {
                     }}
                     sx={{
                         backgroundColor: 'black',
-                        margin: 2.5,
-                        marginTop: 4
+                        marginBottom: 4,
+                        marginTop: 4,
+                        width: '100%'
                     }}
                 />
                 <FormControl error={error}>
@@ -118,7 +119,7 @@ const CreateLeaguePage = () => {
                     <Typography variant='body1' width={30}>{isPrivate ? 'Yes' : 'No'}</Typography>
                 </Box>
                 <Button variant="outlined" color="warning" type="submit" disabled={error} sx={{
-                    width: "250px",
+                    width: "100%",
                     marginTop: "10px",
                     marginBottom: "8px",
                     borderWidth: 2,
@@ -128,7 +129,7 @@ const CreateLeaguePage = () => {
                 </Button>
             </Box>
             <Button variant="outlined" onClick={() => navigate('/dashboard')} sx={{
-                width: "100%",
+                width: "250px",
                 position: "fixed",
                 bottom: 60,
                 borderWidth: 2,
