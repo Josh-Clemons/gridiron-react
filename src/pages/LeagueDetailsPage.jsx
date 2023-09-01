@@ -108,6 +108,10 @@ const LeagueDetailsPage = () => {
 
     }, [picks, user.id, user.username])
 
+    useEffect(() => {
+       console.log("myPicks:", myPicks, "\npicks:", picks);
+    }, [myPicks]);
+
 
     if (isLoadingPicks) {
         return (
