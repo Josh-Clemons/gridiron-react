@@ -30,7 +30,6 @@ const PickSelect = ({picks, week, value, setPicks}) => {
     const handleChange = event => {
         const selectedOption = event.target.value;
         const selectedCompetitor = competitors.find(c => c.week === week && c.team.abbreviation === selectedOption)
-        console.log('selectedOption:', selectedOption, "week:", week, "value:", value, "\ncompetitor:", selectedCompetitor);
         if (selectedOption !== "") {
             if (validateEventId(selectedCompetitor)) {
                 errorAlert("Can't have two teams from the same game in a given week");
