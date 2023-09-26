@@ -76,8 +76,8 @@ const LeagueOverview = ({ picks }) => {
                 // only show other players picks if now is after the start date
                 if (now > startDate || pick.owner.username === user.username) {
                     if (results[index]) {
-                        // disables border until after start date
-                        if (now > startDate) {
+                        // disables border until after game ends
+                        if (pick?.competitor?.completed) {
                             results[index].disableBorder = false;
                         }
 

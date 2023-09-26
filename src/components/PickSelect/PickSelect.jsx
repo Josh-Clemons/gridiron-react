@@ -88,14 +88,12 @@ const PickSelect = ({picks, week, value, setPicks}) => {
     }
 
     const getBorderColor = (pick) => {
-        const startDate = new Date(pick.startDate);
-        if (startDate > new Date() || pick.team === "") {
-            return {border: "none",}
-        } else {
+        if (pick?.completed) {
             return {
                 border: pick.isWinner ? "1px solid green" : "1px solid darkred",
             }
         }
+        return {border: "none",}
     }
 
 

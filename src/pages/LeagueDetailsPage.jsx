@@ -99,7 +99,8 @@ const LeagueDetailsPage = () => {
                 value: pick.value,
                 week: pick.week,
                 startDate: pick.competitor ? pick.competitor.startDate : "",
-                isWinner: pick.competitor ? pick.competitor.winner : false
+                isWinner: pick.competitor ? pick.competitor.winner : false,
+                completed: pick.competitor ? pick.competitor.completed : false
             })
         }));
 
