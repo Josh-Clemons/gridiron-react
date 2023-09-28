@@ -12,3 +12,24 @@ export function checkIsLeagueMember(picks, user) {
 
     return false;
 }
+
+export function findCurrentWeek(competitors) {
+    const delayToSwitchWeeks = 3 * 24 * 60 * 60 * 1000;
+    const currentDate = new Date();
+    const dateWithDelay = new Date(currentDate.getTime() - delayToSwitchWeeks);
+
+    let nextGameStart;
+    let week = 1;
+
+    if(competitors) {
+        for(let competitor of competitors) {
+            const startDate = new Date(competitor.startDate);
+            if((!nextGameStart && startDate > dateWithDelay) ||
+                (startDate < nextGameStart) && (startDate > dateWithDelay)) {
+                nextGameStart = startDate;
+                week = competitor.week;
+            }
+        }
+    }
+    return week;
+}

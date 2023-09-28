@@ -21,6 +21,7 @@ import {UserContext} from "../contexts/UserContext";
 import useLeaguePicks from "../hooks/useLeaguePicks";
 import useScrollToTop from "../hooks/useScrollToTop.js";
 import {checkIsLeagueMember, checkIsLeagueOwner} from "../utils/LeagueUtils.js";
+import {CompetitorContext} from "../contexts/CompetitorContext.jsx";
 
 
 const LeagueDetailsPage = () => {
@@ -158,7 +159,6 @@ const LeagueDetailsPage = () => {
                 {viewState === 'standings' && <LeagueStandings leagueScores={leagueScores}/>}
                 {viewState === 'Picks' &&
                     <PickSelections picks={myPicks} setPicks={setMyPicks} leagueScores={leagueScores}/>}
-                {/*{(viewState === 'Picks' && isLeagueOwner) && <PicksCommissioner />}*/}
                 {viewState === 'overview' && <LeagueOverview picks={picks}/>}
             </Box>
         </Box>

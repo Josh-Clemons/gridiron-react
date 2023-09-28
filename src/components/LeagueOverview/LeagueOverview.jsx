@@ -14,20 +14,32 @@ import { NativeSelect, FormControl } from '@mui/material';
 import { UserContext } from '../../contexts/UserContext';
 import { StyledTableRow } from '../../styles/SharedStyles';
 import DownloadPicksButton from "../Buttons/DownloadPicksButton.jsx";
-import {checkIsLeagueOwner} from "../../utils/LeagueUtils.js";
+import {checkIsLeagueOwner, findCurrentWeek} from "../../utils/LeagueUtils.js";
+import {CompetitorContext} from "../../contexts/CompetitorContext.jsx";
 
 const LeagueOverview = ({ picks }) => {
     // Hooks
     const { user } = useContext(UserContext);
+    const {competitors} = useContext(CompetitorContext);
     const [weeklyPicks, setWeeklyPicks] = useState([]);
     const [isLeagueOwner, setIsLeagueOwner] = useState(false);
+    const [defaultWeek, setDefaultWeek] = useState(1);
 
     useEffect(()=> {
         setIsLeagueOwner(checkIsLeagueOwner(picks, user))
     }, [picks])
 
+    useEffect(()=> {
+        setDefaultWeek(findCurrentWeek(competitors));
+    }, [competitors])
+
+    useEffect(() => {
+        setWeeklyPicks(getPicksByWeek(defaultWeek, picks, user));
+    }, [defaultWeek, picks, user])
+
     const handleWeekChange = (event) => {
         const week = Number(event.target.value);
+        setDefaultWeek(week);
         setWeeklyPicks(getPicksByWeek(week, picks, user));
     }
 
@@ -123,9 +135,6 @@ const LeagueOverview = ({ picks }) => {
         return results;
     }
 
-    useEffect(() => {
-        setWeeklyPicks(getPicksByWeek(1, picks, user));
-    }, [picks, user])
 
     const getBorderStyle = (value, isWinner, disableBorder) => {
         if (disableBorder || value === '-') {
@@ -146,7 +155,7 @@ const LeagueOverview = ({ picks }) => {
             >
                 <Typography variant='h6' sx={{mr: 3}}>Week: </Typography>
                 <FormControl variant="filled" style={{width: '100px'}}>
-                    <NativeSelect
+                    <NativeSelect value={defaultWeek}
                         onChange={handleWeekChange}
                     >
                         {weekOptions}
@@ -215,7 +224,8 @@ const LeagueOverview = ({ picks }) => {
 }
 
 LeagueOverview.propTypes = {
-    picks: PropTypes.array
+    picks: PropTypes.array,
+    competitors: PropTypes.array
 }
 
 export default LeagueOverview;
