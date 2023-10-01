@@ -18,7 +18,7 @@ export const UserProvider = ({ children }) => {
         onSuccess: (data) => {
             setUser(data.data);
             setToken(data.data.accessToken);
-            Cookies.set('user', JSON.stringify(data.data), { expires: 30, secure: true });
+            Cookies.set('user', JSON.stringify(data.data), { expires: 300, secure: true });
             return data.data;
         },
         onError: (error) => {
