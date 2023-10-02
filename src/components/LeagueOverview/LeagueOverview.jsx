@@ -70,12 +70,14 @@ const LeagueOverview = ({ picks }) => {
                     owner: owner,
                     valueOne: "-",
                     isOneWinner: false,
+                    isOneComplete: false,
                     valueThree: "-",
                     isThreeWinner: false,
+                    isThreeComplete: false,
                     valueFive: "-",
                     isFiveWinner: false,
+                    isFiveComplete: false,
                     weeklyScore: 0,
-                    disableBorder: true
                 });
                 index = results.length - 1;
             }
@@ -85,29 +87,28 @@ const LeagueOverview = ({ picks }) => {
 
                 const startDate = new Date(pick.competitor.startDate)
                 const now = new Date();
-                // only show other players picks if now is after the start date
+                // only show other players picks if the start date/time is before now
                 if (now > startDate || pick.owner.username === user.username) {
                     if (results[index]) {
-                        // disables border until after game ends
-                        if (pick?.competitor?.completed) {
-                            results[index].disableBorder = false;
-                        }
 
                         let increment;
                         switch (pick.value) {
                             case 1:
                                 results[index].valueOne = team;
                                 results[index].isOneWinner = pick.competitor.winner;
+                                results[index].isOneComplete = pick.competitor.completed;
                                 increment = 1;
                                 break;
                             case 3:
                                 results[index].valueThree = team;
                                 results[index].isThreeWinner = pick.competitor.winner;
+                                results[index].isThreeComplete = pick.competitor.completed;
                                 increment = 3;
                                 break;
                             case 5:
                                 results[index].valueFive = team;
                                 results[index].isFiveWinner = pick.competitor.winner;
+                                results[index].isFiveComplete = pick.competitor.completed;
                                 increment = 5;
                                 break;
                             default:
@@ -136,12 +137,11 @@ const LeagueOverview = ({ picks }) => {
     }
 
 
-    const getBorderStyle = (value, isWinner, disableBorder) => {
-        if (disableBorder || value === '-') {
-            return "none";
-        } else {
+    const getBorderStyle = (isWinner, isComplete) => {
+        if(isComplete) {
             return isWinner ? "1px solid green" : "1px solid darkred";
         }
+        return "1px solid rgba(0,0,0,0)";
     };
 
     return (
@@ -186,7 +186,7 @@ const LeagueOverview = ({ picks }) => {
                                         </TableCell>
                                         <TableCell>
                                             <Box
-                                                border={getBorderStyle(pick.valueFive, pick.isFiveWinner, pick.disableBorder)}
+                                                border={getBorderStyle(pick.isFiveWinner, pick.isFiveComplete)}
                                                 borderRadius={1}
                                                 p={.5}
                                             >
@@ -195,7 +195,7 @@ const LeagueOverview = ({ picks }) => {
                                         </TableCell>
                                         <TableCell>
                                             <Box
-                                                border={getBorderStyle(pick.valueThree, pick.isThreeWinner, pick.disableBorder)}
+                                                border={getBorderStyle(pick.isThreeWinner, pick.isThreeComplete)}
                                                 borderRadius={1}
                                                 p={.5}
                                             >
@@ -204,7 +204,7 @@ const LeagueOverview = ({ picks }) => {
                                         </TableCell>
                                         <TableCell>
                                             <Box
-                                                border={getBorderStyle(pick.valueOne, pick.isOneWinner, pick.disableBorder)}
+                                                border={getBorderStyle(pick.isOneWinner, pick.isOneComplete)}
                                                 borderRadius={1}
                                                 p={.5}
                                             >
