@@ -62,7 +62,7 @@ export const Dashboard = () => {
                 minHeight: '100vh'
             }}
         >
-            {isError && <h1>shit is no bueno: {error.message}</h1>}
+            {isError && <h2>Error, please log out and log back in. If problem persists, contact Josh at mrjoshc@gmail.com</h2>}
             <Typography sx={{ m: 2 }} variant="h4">Dashboard</Typography>
             <Box
                 overflow={'auto'}
